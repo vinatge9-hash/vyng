@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Niyantri Cafe - About</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="app" class="min-h-screen bg-gradient-to-br from-amber-100 to-amber-200 opacity-0 transition-opacity duration-700">
+    <header class="bg-amber-900 text-white shadow-md">
+      <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <span class="w-8 h-8 rounded-full bg-yellow-400 inline-block"></span>
+          <a href="index.html" class="text-xl font-bold tracking-wide">Niyantri Cafe</a>
+        </div>
+        <ul class="hidden md:flex items-center space-x-6 text-sm">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="menu.html" class="hover:underline">Menu</a></li>
+          <li><a href="cart.html" class="hover:underline">Cart <span class="ml-1 inline-block bg-red-500 text-white text-xs rounded-full px-2 cart-count">0</span></a></li>
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+      <section aria-label="About" data-animate>
+        <h1 class="text-3xl font-bold mb-4">About Niyantri Cafe</h1>
+        <p class="text-slate-700 mb-4">Niyantri Cafe is a warm, inviting space where coffee lovers gather to share conversations, ideas, and moments over handcrafted brews. Our team sources quality beans and roasts them in-house to ensure rich, comforting flavors in every cup.</p>
+        <p class="text-slate-700">Location: Hyderabad, India (placeholder address used on contact page if needed).</p>
+      </section>
+    </main>
+
+    <footer class="bg-slate-900 text-white py-6 mt-12">
+      <div class="container mx-auto px-4 text-sm text-center">&copy; 2025 Niyantri Cafe, Hyderabad, India</div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const app = document.getElementById('app');
+      requestAnimationFrame(() => app && app.classList.add('opacity-100'));
+      const reveals = document.querySelectorAll('[data-animate]');
+      reveals.forEach(el => { el.classList.add('opacity-0','translate-y-6','transition','duration-700'); });
+      const io = new IntersectionObserver((entries)=>{ entries.forEach(e => { if(e.isIntersecting){ e.target.classList.remove('opacity-0','translate-y-6'); e.target.style.opacity='1'; }}); }, { threshold: 0.1 });
+      reveals.forEach(r => io.observe(r));
+      // cart count init
+      updateCartCount();
+    });
+
+    function updateCartCount(){ const count = (JSON.parse(localStorage.getItem('ny_cafe_cart')||'[]')).reduce((a,b)=>a+b.qty,0); document.querySelectorAll('.cart-count').forEach(el => el.textContent = count); }
+  </script>
+</body>
+</html>
