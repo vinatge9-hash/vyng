@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Niyantri Cafe - Menu</title>
+  <meta name="description" content="Menu at Niyantri Cafe" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="app" class="min-h-screen bg-gradient-to-br from-amber-100 to-amber-200 opacity-0 transition-opacity duration-700">
+    <!-- Reused Header (identical across pages) -->
+    <header class="bg-amber-900 text-white shadow-md">
+      <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <span class="w-8 h-8 rounded-full bg-yellow-400 inline-block"></span>
+          <a href="index.html" class="text-xl font-bold tracking-wide">Niyantri Cafe</a>
+        </div>
+        <ul class="hidden md:flex items-center space-x-6 text-sm">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="menu.html" class="hover:underline">Menu</a></li>
+          <li><a href="cart.html" class="hover:underline">Cart <span class="ml-1 inline-block bg-red-500 text-white text-xs rounded-full px-2 cart-count">0</span></a></li>
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+        </ul>
+        <button id="mobileMenuBtn" class="md:hidden text-white"></button>
+      </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+      <section aria-label="Menu grid" data-animate>
+        <h1 class="text-3xl font-extrabold mb-4">Our Menu</h1>
+        <p class="text-slate-700 mb-6">Handcrafted coffee and fresh pastries to brighten your day.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Espresso -->
+          <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+            <img src="https://images.unsplash.com/photo-1559056214-3a8a2643ddd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw3fHxhJTIwc3RlYW1pbmclMjBjdXAlMjBvZiUyMGVzcHJlc3NvfGVufDB8MHx8fDE3NTY3NDg5NjJ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Espresso" class="h-36 w-full object-cover rounded" />
+            <h3 class="mt-2 font-semibold">Espresso</h3>
+            <p class="text-sm text-slate-600">Rich, bold shot to kickstart your day.</p>
+            <span class="mt-1 font-semibold text-slate-800">$3.00</span>
+            <button class="mt-2 w-full bg-amber-800 text-white py-2 rounded hover:bg-amber-900" onclick="addToCart('espresso','Espresso',3.0)">Add to Cart</button>
+          </div>
+          <!-- Americano -->
+          <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+            <img src="https://images.pexels.com/photos/7034229/pexels-photo-7034229.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Americano" class="h-36 w-full object-cover rounded" />
+            <h3 class="mt-2 font-semibold">Americano</h3>
+            <p class="text-sm text-slate-600">Espresso with hot water for a lighter body.</p>
+            <span class="mt-1 font-semibold text-slate-800">$3.50</span>
+            <button class="mt-2 w-full bg-amber-800 text-white py-2 rounded hover:bg-amber-900" onclick="addToCart('americano','Americano',3.5)">Add to Cart</button>
+          </div>
+          <!-- Cappuccino -->
+          <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+            <img src="https://pixabay.com/get/gaf52f9182107b40220efb9707ebc6098cd55cc850f0ddfffa03d169397f01d1027f95d0683c1a829cd10a4903f68400baca73f60d75a0ee534e56626f98ccacd_640.jpg" alt="Cappuccino" class="h-36 w-full object-cover rounded" />
+            <h3 class="mt-2 font-semibold">Cappuccino</h3>
+            <p class="text-sm text-slate-600">Foamy milk capped over rich espresso.</p>
+            <span class="mt-1 font-semibold text-slate-800">$4.00</span>
+            <button class="mt-2 w-full bg-amber-800 text-white py-2 rounded hover:bg-amber-900" onclick="addToCart('cappuccino','Cappuccino',4.0)">Add to Cart</button>
+          </div>
+          <!-- Latte -->
+          <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+            <img src="https://images.pexels.com/photos/2112749/pexels-photo-2112749.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Latte" class="h-36 w-full object-cover rounded" />
+            <h3 class="mt-2 font-semibold">Latte</h3>
+            <p class="text-sm text-slate-600">Creamy milk, smooth espresso, a café favorite.</p>
+            <span class="mt-1 font-semibold text-slate-800">$4.50</span>
+            <button class="mt-2 w-full bg-amber-800 text-white py-2 rounded hover:bg-amber-900" onclick="addToCart('latte','Latte',4.5)">Add to Cart</button>
+          </div>
+          <!-- Mocha -->
+          <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+            <img src="https://images.unsplash.com/photo-1728484855386-cddd40682cde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw4fHxhJTIwbW9jaGF8ZW58MHwwfHx8MTc1Njc0ODk2N3ww&ixlib=rb-4.1.0&q=80&w=1080" alt="Mocha" class="h-36 w-full object-cover rounded" />
+            <h3 class="mt-2 font-semibold">Mocha</h3>
+            <p class="text-sm text-slate-600">Espresso with chocolatey goodness.</p>
+            <span class="mt-1 font-semibold text-slate-800">$5.00</span>
+            <button class="mt-2 w-full bg-amber-800 text-white py-2 rounded hover:bg-amber-900" onclick="addToCart('mocha','Mocha',5.0)">Add to Cart</button>
+          </div>
+          <!-- Cold Brew -->
+          <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+            <img src="https://images.pexels.com/photos/991970/pexels-photo-991970.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Cold Brew" class="h-36 w-full object-cover rounded" />
+            <h3 class="mt-2 font-semibold">Cold Brew</h3>
+            <p class="text-sm text-slate-600">Smooth and refreshing, served cold.</p>
+            <span class="mt-1 font-semibold text-slate-800">$4.75</span>
+            <button class="mt-2 w-full bg-amber-800 text-white py-2 rounded hover:bg-amber-900" onclick="addToCart('coldbrew','Cold Brew',4.75)">Add to Cart</button>
+          </div>
+          <!-- Pastry -->
+          <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+            <img src="https://images.pexels.com/photos/10071279/pexels-photo-10071279.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Croissant" class="h-36 w-full object-cover rounded" />
+            <h3 class="mt-2 font-semibold">Croissant</h3>
+            <p class="text-sm text-slate-600">Buttery flaky delight to pair with your coffee.</p>
+            <span class="mt-1 font-semibold text-slate-800">$2.25</span>
+            <button class="mt-2 w-full bg-amber-800 text-white py-2 rounded hover:bg-amber-900" onclick="addToCart('croissant','Croissant',2.25)">Add to Cart</button>
+          </div>
+          <!-- Muffin -->
+          <div class="bg-white rounded-lg shadow p-4 flex flex-col">
+            <img src="https://pixabay.com/get/g21af401e3a16f5a66205b8d9308776fad54743f085c7464b2ae4edb569dde38fc344a089995dc5e60da1c61317065887db242f6d6e29d12b29220649474607b2_640.jpg" alt="Muffin" class="h-36 w-full object-cover rounded" />
+            <h3 class="mt-2 font-semibold">Blueberry Muffin</h3>
+            <p class="text-sm text-slate-600">Fresh berries, soft crumb, perfect companion to coffee.</p>
+            <span class="mt-1 font-semibold text-slate-800">$2.75</span>
+            <button class="mt-2 w-full bg-amber-800 text-white py-2 rounded hover:bg-amber-900" onclick="addToCart('muffin','Blueberry Muffin',2.75)">Add to Cart</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-6">
+        <a href="index.html" class="text-sm text-amber-700 hover:underline">Back to Home</a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-6 mt-12">
+      <div class="container mx-auto px-4 text-sm text-center">&copy; 2025 Niyantri Cafe, Hyderabad, India</div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const app = document.getElementById('app');
+      requestAnimationFrame(() => app && app.classList.add('opacity-100'));
+      // Reveal on scroll
+      const reveals = document.querySelectorAll('[data-animate]');
+      reveals.forEach(el => { el.classList.add('opacity-0','translate-y-6','transition','duration-700'); });
+      const io = new IntersectionObserver((entries)=>{ entries.forEach(e => { if(e.isIntersecting){ e.target.classList.remove('opacity-0','translate-y-6'); e.target.style.opacity='1'; }}); }, { threshold: 0.1 });
+      reveals.forEach(r => io.observe(r));
+      // Cart count
+      updateCartCount();
+    });
+
+    const CART_KEY = 'ny_cafe_cart';
+    function getCart(){ const s = localStorage.getItem(CART_KEY); try { return s ? JSON.parse(s) : []; } catch(e){ return []; } }
+    function saveCart(cart){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+    function updateCartCount(){ const count = getCart().reduce((a,b)=>a+b.qty,0); document.querySelectorAll('.cart-count').forEach(el => el.textContent = count); }
+    function addToCart(id, name, price){ const cart = getCart(); const found = cart.find(i => i.id === id); if(found){ found.qty += 1; } else { cart.push({ id, name, price, qty: 1 }); } saveCart(cart); updateCartCount(); alert(name + ' added to cart'); }
+    window.addToCart = addToCart;
+  </script>
+</body>
+</html>
